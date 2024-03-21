@@ -143,7 +143,6 @@ class OrderItemViewSet(ModelViewSet):
 
 @csrf_exempt
 @action(detail=False, methods=['POST'])
-@permission_classes([[WebhookPermission]])
 def webhook_handler(request):
     payload = json.loads(request.body.decode('utf-8'))
     signature = request.headers.get('verif-hash')
